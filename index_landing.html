@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Security Exam Games - เกมส์ติว Security</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1525 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            color: #7ca3c0;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: rgba(20, 25, 50, 0.8);
+            border-radius: 16px;
+            padding: 35px 25px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: #e0e0e0;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            border-radius: 16px 16px 0 0;
+        }
+        .card.quiz::before { background: linear-gradient(90deg, #3b82f6, #00d4ff); }
+        .card.cram::before { background: linear-gradient(90deg, #f59e0b, #f97316); }
+        .card.quiz:hover { border-color: #3b82f6; transform: translateY(-8px); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2); }
+        .card.cram:hover { border-color: #f59e0b; transform: translateY(-8px); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2); }
+        .card-icon { font-size: 3em; margin-bottom: 15px; }
+        .card-title { font-size: 1.5em; font-weight: bold; margin-bottom: 8px; }
+        .card.quiz .card-title { color: #3b82f6; }
+        .card.cram .card-title { color: #f59e0b; }
+        .card-title-th { font-size: 1.1em; color: #7ca3c0; margin-bottom: 15px; }
+        .card-desc { font-size: 0.95em; color: #a0a0a0; line-height: 1.6; margin-bottom: 15px; }
+        .card-features { text-align: left; font-size: 0.85em; color: #8ca3c0; }
+        .card-features div { padding: 4px 0; }
+        .card-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        .card.quiz .card-btn { background: #3b82f6; color: white; }
+        .card.quiz:hover .card-btn { background: #2563eb; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4); }
+        .card.cram .card-btn { background: #f59e0b; color: #1a1f3a; }
+        .card.cram:hover .card-btn { background: #d97706; box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4); }
+        .footer {
+            color: #555;
+            font-size: 0.85em;
+            margin-top: 20px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .card.quiz .badge { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .card.cram .badge { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        @media (max-width: 640px) {
+            h1 { font-size: 1.8em; }
+            .cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Security Exam Games</h1>
+        <p class="subtitle">เกมส์ติว CISSP Security | 150 Questions | Bilingual EN/TH</p>
+
+        <div class="cards">
+            <a href="SecurityQuizGame.html" class="card quiz">
+                <div class="card-icon">📝</div>
+                <div class="badge">150 QUESTIONS</div>
+                <div class="card-title">Standard Quiz Game</div>
+                <div class="card-title-th">เกมส์ตอบคำถาม มาตรฐาน</div>
+                <div class="card-desc">Full quiz with detailed explanations, chapter selection, weakness analysis, and comprehensive review.</div>
+                <div class="card-features">
+                    <div>✅ 150 questions (50 per chapter)</div>
+                    <div>✅ Detailed explanations EN/TH</div>
+                    <div>✅ Weakness analysis & review</div>
+                    <div>✅ Score tracking & sharing</div>
+                </div>
+                <div class="card-btn">▶ เล่นเกมส์ Quiz</div>
+            </a>
+
+            <a href="CramGame.html" class="card cram">
+                <div class="card-icon">🧠</div>
+                <div class="badge">CRAM MODE</div>
+                <div class="card-title">Cram Game - ติวเร่งด่วน!</div>
+                <div class="card-title-th">เกมส์จำแบบเร่งด่วน</div>
+                <div class="card-desc">Keyword → Answer flashcard style with memory tricks. Perfect for last-minute cramming before the exam!</div>
+                <div class="card-features">
+                    <div>🔄 Flashcard mode (flip to reveal)</div>
+                    <div>⚡ Speed quiz with timer</div>
+                    <div>💡 Memory tricks & mnemonics</div>
+                    <div>🎯 Weak areas replay</div>
+                </div>
+                <div class="card-btn">▶ เล่นเกมส์ Cram</div>
+            </a>
+        </div>
+
+        <div class="footer">
+            ITM Mahidol University | CISSP Security Domains<br>
+            Ch1: Security & Risk Management | Ch2: Asset Security | Ch3: Security Architecture & Engineering
+        </div>
+    </div>
+</body>
+</html>
