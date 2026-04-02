@@ -542,6 +542,49 @@
             border: 2px solid #f06464;
             color: #f06464;
         }
+
+        /* THAI TOGGLE */
+        .thai-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(30, 35, 60, 0.6);
+            border-radius: 10px;
+        }
+        .thai-toggle-label {
+            color: #a0a0a0;
+            font-size: 0.95em;
+        }
+        .thai-btn {
+            padding: 8px 20px;
+            border: 2px solid #10b981;
+            background: #10b981;
+            color: #0a0e27;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            min-width: 60px;
+        }
+        .thai-btn.off {
+            background: transparent;
+            color: #666;
+            border-color: #444;
+        }
+        .thai-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+        .th-hidden .keyword-th,
+        .th-hidden .answer-th,
+        .th-hidden .trick-text-th,
+        .th-hidden .quiz-question-th,
+        .th-hidden .thai-part {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -561,6 +604,11 @@
             <button class="ch-btn ch2" onclick="setChapter(2)">📗 Chapter 2</button>
             <button class="ch-btn ch3" onclick="setChapter(3)">📙 Chapter 3</button>
             <button class="ch-btn all" onclick="setChapter(0)">🌟 All Chapters</button>
+        </div>
+
+        <div class="thai-toggle">
+            <span class="thai-toggle-label">🇹🇭 คำแปลภาษาไทย</span>
+            <button class="thai-btn" id="thaiBtn" onclick="toggleThai()">ON</button>
         </div>
 
         <div class="stats-bar">
@@ -918,7 +966,7 @@
             q.opts.forEach((opt, idx) => {
                 const div = document.createElement('div');
                 div.className = 'option';
-                div.textContent = opt + ' / ' + q.opts_th[idx];
+                div.innerHTML = opt + (showThai ? ' <span class="thai-part" style="color:#7ca3c0;font-size:0.9em">/ ' + q.opts_th[idx] + '</span>' : '');
                 div.onclick = () => selectOption(idx, q.correct, q);
                 grid.appendChild(div);
             });
@@ -1041,6 +1089,17 @@
             document.getElementById('weakAreasContainer').classList.add('hidden');
             showQuestion();
             showMessage('🎯 Replaying weak areas...', 'success');
+        }
+
+        let showThai = true;
+
+        function toggleThai() {
+            showThai = !showThai;
+            const btn = document.getElementById('thaiBtn');
+            btn.textContent = showThai ? 'ON' : 'OFF';
+            btn.classList.toggle('off', !showThai);
+            document.querySelector('.container').classList.toggle('th-hidden', !showThai);
+            showQuestion();
         }
 
         function shuffleQuestions() {
